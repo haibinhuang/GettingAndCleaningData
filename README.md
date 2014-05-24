@@ -2,7 +2,7 @@ Getting and Cleaning Data
 =========================
 
 ### Raw Data
-The raw data can be found [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+The raw data can be found [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
 This file contains data collected from the accelerometers from the Samsung Galaxy S smartphone tracking human activities.
 
 ### Goal of the project
