@@ -98,16 +98,17 @@ Procedure
 
 ### 1. Download and unzip file
 * [Data file URL](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-* Download script: 
+* Download file. 
+  Script: 
   - fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
   - download.file(fileUrl, destfile="./getdata_projectfiles_UCI HAR Dataset.zip", mode = "wb")
-* unzip script: 
+* unzip file. 
+  Script: 
   - unzip("./getdata_projectfiles_UCI HAR Dataset.zip.zip")
 
 ### 2. Read in data
 * Read in features (file: UCI HAR Dataset/features.txt)
-  This is the name of measurements that correspond to each column of data in X_test.txt and X_train.txt.
-  A little clean up of the names by removing "()", replacing "-" and "," with ".".
+  This is the name of measurements that correspond to each column of data in X_test.txt and X_train.txt. A little clean up of   the names by removing "()", replacing "-" and "," with ".".
   Script:
   - features <- read.table("./UCI HAR Dataset/features.txt")[,2]
   - features <- gsub("\\(\\)", "", features)
@@ -115,13 +116,13 @@ Procedure
   - features <- gsub(",", ".", features)
   
 * Read in test data set
-   + Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names
+   + Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names. 
      Script: 
      - testset <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features)
-   + Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name
+   + Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name.
      Script: 
      - testsubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-   + Read in activity data (UCI HAR Dataset/test/y_test.txt) corresponding to above test data with "activity" as column name
+   + Read in activity data (UCI HAR Dataset/test/y_test.txt) corresponding to above test data with "activity" as column name.
      Script: 
      - testactivity <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity")
    + Merge subject, activity and test data
@@ -129,17 +130,13 @@ Procedure
      - testset <- cbind(testsubject, testactivity, testset)
 
 * Read in train data set
-   + Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names
-     Script: 
+   + Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names. Script: 
      - trainset <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features)
-   + Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name
-     Script: 
+   + Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name. Script: 
      - trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-   + Read in activity data (UCI HAR Dataset/train/y_train.txt) corresponding to above train data with "activity" as column name
-     Script: 
+   + Read in activity data (UCI HAR Dataset/train/y_train.txt) corresponding to above train data with "activity" as column name. Script: 
      - trainactivity <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity")
-   + Merge subject, activity and train data
-     Script: 
+   + Merge subject, activity and train data. Script: 
      - trainset <- cbind(trainsubject, trainactivity, trainset)
 
 * Merge test data set and train data set
