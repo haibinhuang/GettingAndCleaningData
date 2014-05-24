@@ -107,9 +107,7 @@ Procedure
   - unzip("./getdata_projectfiles_UCI HAR Dataset.zip.zip")
 
 ### 2. Read in data
-* Read in features (file: UCI HAR Dataset/features.txt)
-  This is the name of measurements that correspond to each column of data in X_test.txt and X_train.txt. A little clean up of   the names by removing "()", replacing "-" and "," with ".".
-  Script:
+* Read in features (file: UCI HAR Dataset/features.txt). This is the name of measurements that correspond to each column of data in X_test.txt and X_train.txt. A little clean up of   the names by removing "()", replacing "-" and "," with ".". Script:
   - features <- read.table("./UCI HAR Dataset/features.txt")[,2]
   - features <- gsub("\\(\\)", "", features)
   - features <- gsub("-", ".", features)
