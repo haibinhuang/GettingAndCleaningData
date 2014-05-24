@@ -114,7 +114,7 @@ Procedure
   - features <- gsub(",", ".", features)
   
 * Read in test data set
-   + Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names. 
+   + Read in test data (UCI HAR Dataset/test/X_test.txt) using above features as column names. 
      Script: 
      - testset <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features)
    + Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name.
@@ -128,7 +128,7 @@ Procedure
      - testset <- cbind(testsubject, testactivity, testset)
 
 * Read in train data set
-   + Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names. Script: 
+   + Read in train data (UCI HAR Dataset/train/X_train.txt) using above features as column names. Script: 
      - trainset <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features)
    + Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name. Script: 
      - trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
