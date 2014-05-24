@@ -2,15 +2,14 @@ Code Book
 =========
 
 ### Column 1: subject
-**integer** 
+**integer**
 1:30, id for subjects participated in this study.
 
 ### Column 2: activity
-**character** 
-"walking", "walking.upstairs","walking.downstairs","sitting","standing","laying"
-activities the subjects are doing when the data are collected.
+**character**
+"walking", "walking.upstairs","walking.downstairs","sitting","standing","laying". Activities the subjects are doing when the data are collected.
 
-### column 3-68:
+### Columns 3-68:
 * tbodyacc.mean.x          
 * tbodyacc.mean.y          
 * tbodyacc.mean.z          
@@ -80,7 +79,7 @@ activities the subjects are doing when the data are collected.
 
 **numeric**
 
-averages of mean value and standard variation of the measurements (details below). 
+Averages of mean value and standard variation of the measurements (details below). 
 
 These data come from the accelerometer and gyroscope 3-axial raw signals tacc.xyz and tgyro.xyz. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tbodyacc.xyz and tgravityacc.xyz) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
@@ -99,43 +98,11 @@ Procedure
 
 ### 1. Download and unzip file
 * [Data file URL](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-* Download script: fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  download.file(fileUrl, destfile="./getdata_projectfiles_UCI HAR Dataset.zip", mode = "wb")
-* unzip script: unzip("./getdata_projectfiles_UCI HAR Dataset.zip")
-* The result data file structure:
-  ├─UCI HAR Dataset
-  │├─activity_labels.txt    80B
-  │├─features.txt     15.42KB
-  │├─features_info.txt      2.74KB
-  │├─README.txt      4.35KB
-  │├─test
-  ││├─Inertial Signals
-  │││├─body_acc_x_test.txt      5.76MB
-  │││├─body_acc_y_test.txt      5.76MB
-  │││├─body_acc_z_test.txt      5.76MB
-  │││├─body_gyro_x_test.txt      5.76MB
-  │││├─body_gyro_y_test.txt      5.76MB
-  │││├─body_gyro_z_test.txt      5.76MB
-  │││├─total_acc_x_test.txt      5.76MB
-  │││├─total_acc_y_test.txt      5.76MB
-  │││└─total_acc_z_test.txt      5.76MB
-  ││├─subject_test.txt      7.75KB
-  ││├─X_test.txt     25.23MB
-  ││└─y_test.txt      5.76KB
-  │└─train
-  │├─Inertial Signals
-  ││├─body_acc_x_train.txt     14.37MB
-  ││├─body_acc_y_train.txt     14.37MB
-  ││├─body_acc_z_train.txt     14.37MB
-  ││├─body_gyro_x_train.txt     14.37MB
-  ││├─body_gyro_y_train.txt     14.37MB
-  ││├─body_gyro_z_train.txt     14.37MB
-  ││├─total_acc_x_train.txt     14.37MB
-  ││├─total_acc_y_train.txt     14.37MB
-  ││└─total_acc_z_train.txt     14.37MB
-  │├─subject_train.txt     19.68KB
-  │├─X_train.txt     62.95MB
-  │└─y_train.txt     14.36KB
+* Download script: 
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileUrl, destfile="./getdata_projectfiles_UCI HAR Dataset.zip", mode = "wb")
+* unzip script: 
+unzip("./getdata_projectfiles_UCI HAR Dataset.zip")
 
 ### 2. Read in data
 * Read in features (file: UCI HAR Dataset/features.txt)
