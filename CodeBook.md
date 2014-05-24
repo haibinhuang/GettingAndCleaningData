@@ -99,10 +99,10 @@ Procedure
 ### 1. Download and unzip file
 * [Data file URL](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 * Download script: 
-  fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  download.file(fileUrl, destfile="./UCI HAR Dataset.zip", mode = "wb")
+  - fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  - download.file(fileUrl, destfile="./UCI HAR Dataset.zip", mode = "wb")
 * unzip script: 
-  unzip("./UCI HAR Dataset.zip")
+  - unzip("./UCI HAR Dataset.zip")
 
 ### 2. Read in data
 * Read in features (file: UCI HAR Dataset/features.txt)
