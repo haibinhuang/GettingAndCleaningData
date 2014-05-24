@@ -1,6 +1,10 @@
 Code Book
 =========
 
+### Overview
+
+**180 obs. of 68 variables data frame in txt format**
+
 ### Column 1: subject
 **integer**
 1:30, id for subjects participated in this study.
