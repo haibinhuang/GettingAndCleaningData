@@ -115,30 +115,30 @@ Procedure
   - features <- gsub(",", ".", features)
   
 * Read in test data set
-*    Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names
++    Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names
      Script: 
      - testset <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features)
-*    Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name
++    Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name
      Script: 
      - testsubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-*    Read in activity data (UCI HAR Dataset/test/y_test.txt) corresponding to above test data with "activity" as column name
++    Read in activity data (UCI HAR Dataset/test/y_test.txt) corresponding to above test data with "activity" as column name
      Script: 
      - testactivity <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity")
-*    Merge subject, activity and test data
++    Merge subject, activity and test data
      Script: 
      - testset <- cbind(testsubject, testactivity, testset)
 
 * Read in train data set
-*    Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names
++    Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names
      Script: 
      - trainset <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features)
-*    Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name
++    Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name
      Script: 
      - trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-*    Read in activity data (UCI HAR Dataset/train/y_train.txt) corresponding to above train data with "activity" as column name
++    Read in activity data (UCI HAR Dataset/train/y_train.txt) corresponding to above train data with "activity" as column name
      Script: 
      - trainactivity <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity")
-*    Merge subject, activity and train data
++    Merge subject, activity and train data
      Script: 
      - trainset <- cbind(trainsubject, trainactivity, trainset)
 
@@ -148,13 +148,13 @@ Procedure
 
 ### 3. Clean up data
 * Select columns related to mean and std of measurement
-*    Select columns that contain "mean" or "std" in their column names
++    Select columns that contain "mean" or "std" in their column names
      Script: 
      - i <- grep("mean|std", colnames(allset))
-*    Combine those columns with column subject and activity
++    Combine those columns with column subject and activity
      Script: 
      - meanandstd <- allset[, c(1,2,i)]
-*    Remove columns that contain "meanFreq" since they don't have correspondin "std" column and are not the "mean" and "std" measurement we are looking at
++    Remove columns that contain "meanFreq" since they don't have correspondin "std" column and are not the "mean" and "std" measurement we are looking at
      Script: 
      - j <- grep("meanFreq", colnames(meanandstd))
      - meanandstd <- meanandstd[, -j]
@@ -162,11 +162,11 @@ Procedure
   Script: 
   - colnames(meanandstd) <- tolower(colnames(meanandstd))
 * Calculate the average of selected measurements
-*    melt the data frame according to subject and activity
++    melt the data frame according to subject and activity
      Script: 
      - library(reshape2)
      - meltedmeanandstd <- melt(meanandstd, id.vars = c("subject", "activity"))
-*    dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
++    dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
      Script: 
      - meanandstdtidy <- dcast(meltedmeanandstd, subject + activity ~ variable, fun.aggregate = mean)
 * Change the activity code to actural activity name
@@ -180,8 +180,4 @@ Procedure
 * Write the clean data table to text file
   Script: 
   - write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
-  
-
-
-
-
+ 
