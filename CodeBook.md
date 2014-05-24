@@ -100,72 +100,86 @@ Procedure
 * [Data file URL](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 * Download script: 
   - fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  - download.file(fileUrl, destfile="./UCI HAR Dataset.zip", mode = "wb")
+  - download.file(fileUrl, destfile="./getdata_projectfiles_UCI HAR Dataset.zip", mode = "wb")
 * unzip script: 
-  - unzip("./UCI HAR Dataset.zip")
+  - unzip("./getdata_projectfiles_UCI HAR Dataset.zip.zip")
 
 ### 2. Read in data
 * Read in features (file: UCI HAR Dataset/features.txt)
   This is the name of measurements that correspond to each column of data in X_test.txt and X_train.txt.
   A little clean up of the names by removing "()", replacing "-" and "," with ".".
   Script:
-  features <- read.table("./UCI HAR Dataset/features.txt")[,2]
-  features <- gsub("\\(\\)", "", features)
-  features <- gsub("-", ".", features)
-  features <- gsub(",", ".", features)
+  - features <- read.table("./UCI HAR Dataset/features.txt")[,2]
+  - features <- gsub("\\(\\)", "", features)
+  - features <- gsub("-", ".", features)
+  - features <- gsub(",", ".", features)
   
 * Read in test data set
 *    Read in test data (UCI HAR Dataset/test/X_test.txt) using above features names as column names
-     Script: testset <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features)
+     Script: 
+     - testset <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = features)
 *    Read in subject data (UCI HAR Dataset/test/subject_test.txt) corresponding to above test data (only the second column data were used) with "subject" as column name
-     Script: testsubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+     Script: 
+     - testsubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
 *    Read in activity data (UCI HAR Dataset/test/y_test.txt) corresponding to above test data with "activity" as column name
-     Script: testactivity <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity")
+     Script: 
+     - testactivity <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity")
 *    Merge subject, activity and test data
-     Script: testset <- cbind(testsubject, testactivity, testset)
+     Script: 
+     - testset <- cbind(testsubject, testactivity, testset)
 
 * Read in train data set
 *    Read in train data (UCI HAR Dataset/train/X_train.txt) using above features names as column names
-     Script: trainset <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features)
+     Script: 
+     - trainset <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = features)
 *    Read in subject data (UCI HAR Dataset/train/subject_train.txt) corresponding to above train data (only the second column data were used) with "subject" as column name
-     Script: trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+     Script: 
+     - trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
 *    Read in activity data (UCI HAR Dataset/train/y_train.txt) corresponding to above train data with "activity" as column name
-     Script: trainactivity <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity")
+     Script: 
+     - trainactivity <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity")
 *    Merge subject, activity and train data
-     Script: trainset <- cbind(trainsubject, trainactivity, trainset)
+     Script: 
+     - trainset <- cbind(trainsubject, trainactivity, trainset)
 
 * Merge test data set and train data set
-  Script: allset <- merge(testset, trainset, all=TRUE)
+  Script: 
+  - allset <- merge(testset, trainset, all=TRUE)
 
 ### 3. Clean up data
 * Select columns related to mean and std of measurement
 *    Select columns that contain "mean" or "std" in their column names
-     Script: i <- grep("mean|std", colnames(allset))
+     Script: 
+     - i <- grep("mean|std", colnames(allset))
 *    Combine those columns with column subject and activity
-     Script: meanandstd <- allset[, c(1,2,i)]
+     Script: 
+     - meanandstd <- allset[, c(1,2,i)]
 *    Remove columns that contain "meanFreq" since they don't have correspondin "std" column and are not the "mean" and "std" measurement we are looking at
      Script: 
-	 j <- grep("meanFreq", colnames(meanandstd))
-	 meanandstd <- meanandstd[, -j]
+     - j <- grep("meanFreq", colnames(meanandstd))
+     - meanandstd <- meanandstd[, -j]
 * Further clean up feature names (change to lower case)
-  Script: colnames(meanandstd) <- tolower(colnames(meanandstd))
+  Script: 
+  - colnames(meanandstd) <- tolower(colnames(meanandstd))
 * Calculate the average of selected measurements
 *    melt the data frame according to subject and activity
      Script: 
-	 library(reshape2)
-	 meltedmeanandstd <- melt(meanandstd, id.vars = c("subject", "activity"))
-*	 dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
-     Script: meanandstdtidy <- dcast(meltedmeanandstd, subject + activity ~ variable, fun.aggregate = mean)
+     - library(reshape2)
+     - meltedmeanandstd <- melt(meanandstd, id.vars = c("subject", "activity"))
+*    dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
+     Script: 
+     - meanandstdtidy <- dcast(meltedmeanandstd, subject + activity ~ variable, fun.aggregate = mean)
 * Change the activity code to actural activity name
   Script:
-  meanandstdtidy$activity[meanandstdtidy$activity == "1"] <- "walking"
-  meanandstdtidy$activity[meanandstdtidy$activity == "2"] <- "walking.upstairs"
-  meanandstdtidy$activity[meanandstdtidy$activity == "3"] <- "walking.downstairs"
-  meanandstdtidy$activity[meanandstdtidy$activity == "4"] <- "sitting"
-  meanandstdtidy$activity[meanandstdtidy$activity == "5"] <- "standing"
-  meanandstdtidy$activity[meanandstdtidy$activity == "6"] <- "laying"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "1"] <- "walking"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "2"] <- "walking.upstairs"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "3"] <- "walking.downstairs"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "4"] <- "sitting"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "5"] <- "standing"
+  - meanandstdtidy$activity[meanandstdtidy$activity == "6"] <- "laying"
 * Write the clean data table to text file
-  Script: write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
+  Script: 
+  - write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
   
 
 
