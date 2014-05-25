@@ -73,5 +73,9 @@ meanandstdtidy$activity[meanandstdtidy$activity == "4"] <- "sitting"
 meanandstdtidy$activity[meanandstdtidy$activity == "5"] <- "standing"
 meanandstdtidy$activity[meanandstdtidy$activity == "6"] <- "laying"
 
+## add "average of." to the names of columns 3-68
+colnames(meanandstdtidy)[3:ncol(meanandstdtidy)] <- paste("average.of.", 
+              colnames(meanandstdtidy)[3:ncol(meanandstdtidy)], sep = "")
+
 ## write the tidy data frame to file
 write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
