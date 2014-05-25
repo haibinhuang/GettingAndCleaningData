@@ -150,10 +150,10 @@ Procedure
    + Select columns that contain "mean" or "std" in their column names.
      Script: 
      - i <- grep("mean|std", colnames(allset))
-   + Combine those columns with column subject and activity
+   + Combine those columns with column subject and activity.
      Script: 
      - meanandstd <- allset[, c(1,2,i)]
-   + Remove columns that contain "meanFreq" since they don't have correspondin "std" column and are not the "mean" and "std" measurement we are looking at
+   + Remove columns that contain "meanFreq" since they don't have correspondin "std" column and are not the "mean" and "std" measurement we are looking at.
      Script: 
      - j <- grep("meanFreq", colnames(meanandstd))
      - meanandstd <- meanandstd[, -j]
@@ -161,11 +161,11 @@ Procedure
   Script: 
   - colnames(meanandstd) <- tolower(colnames(meanandstd))
 * Calculate the average of selected measurements
-   + melt the data frame according to subject and activity
+   + melt the data frame according to subject and activity.
      Script: 
      - library(reshape2)
      - meltedmeanandstd <- melt(meanandstd, id.vars = c("subject", "activity"))
-   + dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
+   + dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns.
      Script: 
      - meanandstdtidy <- dcast(meltedmeanandstd, subject + activity ~ variable, fun.aggregate = mean)
 * Change the activity code to actural activity name.
