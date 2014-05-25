@@ -14,72 +14,72 @@ Code Book
 "walking", "walking.upstairs","walking.downstairs","sitting","standing","laying". Activities the subjects are doing when the data are collected.
 
 ### Columns 3-68:
-* tbodyacc.mean.x          
-* tbodyacc.mean.y          
-* tbodyacc.mean.z          
-* tbodyacc.std.x           
-* tbodyacc.std.y           
-* tbodyacc.std.z           
-* tgravityacc.mean.x       
-* tgravityacc.mean.y       
-* tgravityacc.mean.z       
-* tgravityacc.std.x        
-* tgravityacc.std.y        
-* tgravityacc.std.z        
-* tbodyaccjerk.mean.x      
-* tbodyaccjerk.mean.y      
-* tbodyaccjerk.mean.z      
-* tbodyaccjerk.std.x       
-* tbodyaccjerk.std.y       
-* tbodyaccjerk.std.z       
-* tbodygyro.mean.x         
-* tbodygyro.mean.y         
-* tbodygyro.mean.z         
-* tbodygyro.std.x          
-* tbodygyro.std.y          
-* tbodygyro.std.z          
-* tbodygyrojerk.mean.x     
-* tbodygyrojerk.mean.y     
-* tbodygyrojerk.mean.z     
-* tbodygyrojerk.std.x      
-* tbodygyrojerk.std.y      
-* tbodygyrojerk.std.z      
-* tbodyaccmag.mean         
-* tbodyaccmag.std          
-* tgravityaccmag.mean      
-* tgravityaccmag.std       
-* tbodyaccjerkmag.mean     
-* tbodyaccjerkmag.std      
-* tbodygyromag.mean        
-* tbodygyromag.std         
-* tbodygyrojerkmag.mean    
-* tbodygyrojerkmag.std     
-* fbodyacc.mean.x          
-* fbodyacc.mean.y          
-* fbodyacc.mean.z          
-* fbodyacc.std.x           
-* fbodyacc.std.y           
-* fbodyacc.std.z           
-* fbodyaccjerk.mean.x      
-* fbodyaccjerk.mean.y      
-* fbodyaccjerk.mean.z      
-* fbodyaccjerk.std.x       
-* fbodyaccjerk.std.y       
-* fbodyaccjerk.std.z       
-* fbodygyro.mean.x         
-* fbodygyro.mean.y         
-* fbodygyro.mean.z         
-* fbodygyro.std.x          
-* fbodygyro.std.y          
-* fbodygyro.std.z          
-* fbodyaccmag.mean         
-* fbodyaccmag.std          
-* fbodybodyaccjerkmag.mean 
-* fbodybodyaccjerkmag.std  
-* fbodybodygyromag.mean    
-* fbodybodygyromag.std     
-* fbodybodygyrojerkmag.mean
-* fbodybodygyrojerkmag.std 
+* average.of.tbodyacc.mean.x          
+* average.of.tbodyacc.mean.y          
+* average.of.tbodyacc.mean.z          
+* average.of.tbodyacc.std.x           
+* average.of.tbodyacc.std.y           
+* average.of.tbodyacc.std.z           
+* average.of.tgravityacc.mean.x       
+* average.of.tgravityacc.mean.y       
+* average.of.tgravityacc.mean.z       
+* average.of.tgravityacc.std.x        
+* average.of.tgravityacc.std.y        
+* average.of.tgravityacc.std.z        
+* average.of.tbodyaccjerk.mean.x      
+* average.of.tbodyaccjerk.mean.y      
+* average.of.tbodyaccjerk.mean.z      
+* average.of.tbodyaccjerk.std.x       
+* average.of.tbodyaccjerk.std.y       
+* average.of.tbodyaccjerk.std.z       
+* average.of.tbodygyro.mean.x         
+* average.of.tbodygyro.mean.y         
+* average.of.tbodygyro.mean.z         
+* average.of.tbodygyro.std.x          
+* average.of.tbodygyro.std.y          
+* average.of.tbodygyro.std.z          
+* average.of.tbodygyrojerk.mean.x     
+* average.of.tbodygyrojerk.mean.y     
+* average.of.tbodygyrojerk.mean.z     
+* average.of.tbodygyrojerk.std.x      
+* average.of.tbodygyrojerk.std.y      
+* average.of.tbodygyrojerk.std.z      
+* average.of.tbodyaccmag.mean         
+* average.of.tbodyaccmag.std          
+* average.of.tgravityaccmag.mean      
+* average.of.tgravityaccmag.std       
+* average.of.tbodyaccjerkmag.mean     
+* average.of.tbodyaccjerkmag.std      
+* average.of.tbodygyromag.mean        
+* average.of.tbodygyromag.std         
+* average.of.tbodygyrojerkmag.mean    
+* average.of.tbodygyrojerkmag.std     
+* average.of.fbodyacc.mean.x          
+* average.of.fbodyacc.mean.y          
+* average.of.fbodyacc.mean.z          
+* average.of.fbodyacc.std.x           
+* average.of.fbodyacc.std.y           
+* average.of.fbodyacc.std.z           
+* average.of.fbodyaccjerk.mean.x      
+* average.of.fbodyaccjerk.mean.y      
+* average.of.fbodyaccjerk.mean.z      
+* average.of.fbodyaccjerk.std.x       
+* average.of.fbodyaccjerk.std.y       
+* average.of.fbodyaccjerk.std.z       
+* average.of.fbodygyro.mean.x         
+* average.of.fbodygyro.mean.y         
+* average.of.fbodygyro.mean.z         
+* average.of.fbodygyro.std.x          
+* average.of.fbodygyro.std.y          
+* average.of.fbodygyro.std.z          
+* average.of.fbodyaccmag.mean         
+* average.of.fbodyaccmag.std          
+* average.of.fbodybodyaccjerkmag.mean 
+* average.of.fbodybodyaccjerkmag.std  
+* average.of.fbodybodygyromag.mean    
+* average.of.fbodybodygyromag.std     
+* average.of.fbodybodygyrojerkmag.mean
+* average.of.fbodybodygyrojerkmag.std 
 
 **numeric**
 
@@ -176,6 +176,9 @@ Procedure
   - meanandstdtidy$activity[meanandstdtidy$activity == "4"] <- "sitting"
   - meanandstdtidy$activity[meanandstdtidy$activity == "5"] <- "standing"
   - meanandstdtidy$activity[meanandstdtidy$activity == "6"] <- "laying"
+* Add "average.of." to the names of columns with measurements
+  Script:
+  - colnames(meanandstdtidy)[3:ncol(meanandstdtidy)] <- paste("average.of.", colnames(meanandstdtidy)[3:ncol(meanandstdtidy)], sep = "")
 * Write the clean data table to text file
   Script: 
   - write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
