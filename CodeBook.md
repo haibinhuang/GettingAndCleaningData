@@ -141,13 +141,13 @@ Procedure
    + Merge subject, activity and train data. Script: 
      - trainset <- cbind(trainsubject, trainactivity, trainset)
 
-* Merge test data set and train data set
+* Merge test data set and train data set.
   Script: 
   - allset <- merge(testset, trainset, all=TRUE)
 
 ### 3. Clean up data
 * Select columns related to mean and std of measurement
-   + Select columns that contain "mean" or "std" in their column names
+   + Select columns that contain "mean" or "std" in their column names.
      Script: 
      - i <- grep("mean|std", colnames(allset))
    + Combine those columns with column subject and activity
@@ -157,7 +157,7 @@ Procedure
      Script: 
      - j <- grep("meanFreq", colnames(meanandstd))
      - meanandstd <- meanandstd[, -j]
-* Further clean up feature names (change to lower case)
+* Further clean up feature names (change to lower case).
   Script: 
   - colnames(meanandstd) <- tolower(colnames(meanandstd))
 * Calculate the average of selected measurements
@@ -168,7 +168,7 @@ Procedure
    + dcast the melted data frame according subject and activity and calculate the aggregated mean of other columns
      Script: 
      - meanandstdtidy <- dcast(meltedmeanandstd, subject + activity ~ variable, fun.aggregate = mean)
-* Change the activity code to actural activity name
+* Change the activity code to actural activity name.
   Script:
   - meanandstdtidy$activity[meanandstdtidy$activity == "1"] <- "walking"
   - meanandstdtidy$activity[meanandstdtidy$activity == "2"] <- "walking.upstairs"
@@ -176,10 +176,10 @@ Procedure
   - meanandstdtidy$activity[meanandstdtidy$activity == "4"] <- "sitting"
   - meanandstdtidy$activity[meanandstdtidy$activity == "5"] <- "standing"
   - meanandstdtidy$activity[meanandstdtidy$activity == "6"] <- "laying"
-* Add "average.of." to the names of columns with measurements
+* Add "average.of." to the names of columns with measurements.
   Script:
   - colnames(meanandstdtidy)[3:ncol(meanandstdtidy)] <- paste("average.of.", colnames(meanandstdtidy)[3:ncol(meanandstdtidy)], sep = "")
-* Write the clean data table to text file
+* Write the clean data table to text file.
   Script: 
   - write.table(meanandstdtidy, file = "./humanactivitybysmartphone.txt")
  
